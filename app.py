@@ -37,13 +37,6 @@ class ChatCallbackHandler(BaseCallbackHandler):
 
 key = ""
 
-llm = ChatOpenAI(
-    temperature=0.1,
-    streaming=True,
-    callbacks=[ChatCallbackHandler()],
-    api_key=key
-)
-
 # st.session_state 초기화
 if "messages" not in st.session_state:
     st.session_state["messages"] = []
@@ -113,7 +106,7 @@ Upload your file at the Sidebar.
 """)
 
 with st.sidebar:
-    ç = st.text_input("OpenAI API Key")
+    key = st.text_input("OpenAI API Key")
     file = st.file_uploader("Upload a .txt .pdf or .docx file", type=["pdf", "txt", "docs"])
 
 if file:
@@ -123,6 +116,13 @@ if file:
     message = st.chat_input("Ask anything about your file...")
     if message:
         send_message(message, "Human")
+
+        llm = ChatOpenAI(
+            temperature=0.1,
+            streaming=True,
+            callbacks=[ChatCallbackHandler()],
+            api_key=key
+)       
 
         memory = ConversationBufferMemory(
             llm=llm,
