@@ -122,7 +122,7 @@ if file:
             streaming=True,
             callbacks=[ChatCallbackHandler()],
             api_key=key
-)       
+        )       
 
         memory = ConversationBufferMemory(
             llm=llm,
