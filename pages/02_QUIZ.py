@@ -68,12 +68,12 @@ def wiki_search(_term):
 with st.sidebar:
     key = st.text_input("OpenAI API Key")
     docs = None
-    choice = st.selectbox("Choose What you want to use", (
-        "File", "Wikipedia Article",
-    ),)
     level = st.selectbox("Choose The Level of Difficult.", (
         "Easy", "Hard"
     ))
+    choice = st.selectbox("Choose What you want to use", (
+        "File", "Wikipedia Article",
+    ),)
     if choice == "File":
         file = st.file_uploader("Upload a .docs, .txt or .pdf file", type=["pdf", "txt", "docs"],)
         if file:
@@ -367,8 +367,6 @@ if not docs:
     """
     )
 else:
-    with st.sidebar:
-        st.write(level)
     response = run_function_call_chain(docs, level, topic if topic else file.name)
 
     count = 0
