@@ -74,6 +74,7 @@ with st.sidebar:
     choice = st.selectbox("Choose What you want to use", (
         "File", "Wikipedia Article",
     ),)
+    st.write("Github: https://github.com/oliv3h/FULLSTACK-GPT-CHALLENGE/blob/main/pages/02_QUIZ.py")
     if choice == "File":
         file = st.file_uploader("Upload a .docs, .txt or .pdf file", type=["pdf", "txt", "docs"],)
         if file:
