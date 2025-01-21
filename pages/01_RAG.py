@@ -108,7 +108,8 @@ Upload your file at the Sidebar.
 with st.sidebar:
     key = st.text_input("OpenAI API Key")
     file = st.file_uploader("Upload a .txt .pdf or .docx file", type=["pdf", "txt", "docs"])
-
+    st.write("Github: https://github.com/oliv3h/FULLSTACK-GPT-CHALLENGE/blob/main/pages/01_RAG.py")
+    
 if file:
     retriever = embed_file(file)
     send_message("I'm Ready! Ask Away!", "ai", save=False)
